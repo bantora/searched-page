@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react'
+import { render } from '@testing-library/react';
 import Button from './';
 
 describe("button component", () => {
@@ -6,5 +6,5 @@ describe("button component", () => {
 		const ButtonComponent = render(<Button color='primary'>Button Component</Button>);
 
 		expect(ButtonComponent);
-	})
+	});
 });

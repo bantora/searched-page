@@ -1,4 +1,4 @@
-import type { ReactNode, ReactElement, PropsWithChildren } from 'react';
+import type { ReactElement, PropsWithChildren } from 'react';
 
 type Color = 'primary' | 'secondary'
 
@@ -12,8 +12,8 @@ const buttonConfig = {
 	secondary: 'p-2 bg-orange-500 rounded hover:bg-orange-700',
 };
 const Button = ({ children, color, ...rest }: ButtonProps): ReactElement => {
-	return <button {...rest} className={`${buttonConfig[color]} `}>{children}</button>
-}
+	return <button {...rest} className={`${buttonConfig[color]} `}>{children}</button>;
+};
 
 
 export default Button;
