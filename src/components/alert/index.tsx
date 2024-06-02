@@ -1,11 +1,10 @@
-import type { ReactElement, ReactNode } from 'react';
+import type { PropsWithChildren, ReactElement, ReactNode } from 'react';
 
 type Variant = 'info' | 'error' | 'success'
 
-interface AlertProps {
-	variant: Variant;
+interface AlertProps extends PropsWithChildren {
+	variant?: Variant;
 	title: ReactNode;
-	list?: ReactNode[];
 	isVisible: boolean;
 }
 
@@ -15,15 +14,15 @@ const AlertConfig = {
 	success: 'border-green-500 text-green-500',
 };
 
-const Alert = ({ list, title, variant, isVisible = true }: AlertProps): ReactElement | null => {
+const Alert = ({ children, title, variant = 'info', isVisible = true }: AlertProps): ReactElement | null => {
+	console.log(children);
+
 	if (!isVisible) return null;
 	return (
-		<div className={`${AlertConfig[variant]} flex border-2 rounded-md p-2`}>
-			<div className="">{title}</div>
+		<div className={`${AlertConfig[variant]} flex flex-col border-2 rounded-md p-2 divide-y divide-blue-500 bg-white`}>
+			<div className="text-2xl font-semibold">{title}</div>
 			{
-				list && <ul className="mt-1.5 list-disc list-inside">
-					{list.map((val, ind) => <li key={`${ind}${val}`}>{val}</li>)}
-				</ul>
+				children && <div className="mt-4">{children}</div>
 			}
 		</div>
 	);
